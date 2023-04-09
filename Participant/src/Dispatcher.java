@@ -72,6 +72,7 @@ public class Dispatcher implements Runnable {
 										System.out.println("Registering participant now");
 									}else{
 										System.out.println("Participant is registered already");
+										break;
 									}
 									ops.registerParticipant(cmd.get(1));
 									status = readFromInpStream();
