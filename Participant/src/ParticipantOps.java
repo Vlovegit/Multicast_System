@@ -56,7 +56,7 @@ public class ParticipantOps {
 		
 		writeToOutputStream("reconnect");
 		writeToOutputStream(newPort);
-		Participant.pConnStatus = true;
+		//Participant.pConnStatus = true;
 	}
 
 	public void multicastSend(String messageStringMulticast) {

@@ -123,6 +123,11 @@ public class Dispatcher implements Runnable {
 										status = readFromInpStream();
 										if(status.equals("fail")){//"Reconnection not successful"
 											System.out.println("Unable to reconnect to server");
+											rcvrThread.disconnectPresentReceiver();
+										}
+										else
+										{
+											Participant.pConnStatus = true;
 										}
 									}else{
 										System.out.println("Already connected to server.");

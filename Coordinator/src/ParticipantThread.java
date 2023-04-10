@@ -41,7 +41,7 @@ public class ParticipantThread implements Runnable {
 				String command = pInputStream.readUTF();// /read user input
 
 				if (!command.equals("deregister")) {
-
+					System.out.println("Command Recieved : " + command);
 					switch (command) {
 
 					case "register":
@@ -81,6 +81,7 @@ public class ParticipantThread implements Runnable {
 											System.out.println("Status after reconnection "	+ participant.connectionStatus);
 											pOutputStream.writeUTF("pass");//"Reconnected successfully"
 										} else {
+											System.out.println("Cannot connect to port : "+pInputStream.readUTF());
 											pOutputStream.writeUTF("fail");//"Reconnect unsuccessful"
 										}
 										break;
@@ -115,6 +116,7 @@ public class ParticipantThread implements Runnable {
 		} catch (IOException ef) {
 			System.out.println("Participant terminated forcefully"
 					+ ef.getMessage());
+			cthread.deregister();
 		} catch (Exception e) {
 			System.out.println("Command execution sent by participant failed due to " +e.getMessage());
 			//e.printStackTrace();
